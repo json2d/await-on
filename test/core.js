@@ -3,8 +3,8 @@ const on = require('../lib/await-on')
 const ANSWER = 42
 const ERROR = new Error('Need more time to figure that out')
 
-let waitOne = () => new Promise(resolve => setTimeout(()=>resolve(ANSWER),1000))
-let waitOneAndThrow = () => new Promise( (resolve,reject) => setTimeout(() => reject(ERROR),1000))
+let waitOne = (answer=ANSWER) => new Promise(resolve => setTimeout(() => resolve(answer),1000))
+let waitOneAndThrow = () => waitOne().then(res => Promise.reject(ERROR))
 
 tap.test("on", async function (t) {
   t.plan(2)
@@ -25,6 +25,18 @@ tap.test("@handler", async function (t) {
 	t.notOk(err)
 	t.equal(res,ANSWER)
 })
+
+tap.test("@handler (with args)", async function (t) {
+  t.plan(2)
+
+	const waitOneHandle = on.handler(waitOne)
+
+	const [err,res] = await waitOneHandle(41)
+
+	t.notOk(err)
+	t.equal(res,41)
+})
+
 
 tap.test("Promise.prototype.handle", async function (t) {
   t.plan(2)
