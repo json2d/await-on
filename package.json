@@ -1,0 +1,36 @@
+{
+  "name": "await-on",
+  "version": "0.1.0",
+  "description": "really simple error handling with await/async",
+  "main": "lib/await-on.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "tap test/*.js --coverage"
+  },
+  "keywords": [
+    "await",
+    "async",
+    "error",
+    "handler",
+    "handling",
+    "simple",
+    "try",
+    "catch",
+    "block",
+    "promise"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitstrider/await-on.git"
+  },
+  "author": "Jason Yung",
+  "license": "MIT",
+  "devDependencies": {
+    "tap": "^10.7.2"
+  },
+  "engines": {
+    "node": ">=7.6"
+  }
+}

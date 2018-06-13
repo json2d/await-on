@@ -1,0 +1,11 @@
+language: node_js
+
+node_js:
+  - 7.6
+  - 8.11
+
+before-script:
+  npm i
+
+script:
+  - npm test
