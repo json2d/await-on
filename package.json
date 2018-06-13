@@ -1,6 +1,6 @@
 {
   "name": "await-on",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "really simple error handling with await/async",
   "main": "lib/await-on.js",
   "directories": {
