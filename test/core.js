@@ -1,6 +1,5 @@
 const tap = require('tap')
-const {handler,on} = require('../lib/await-on')
-
+const on = require('../lib/await-on')
 const ANSWER = 42
 const ERROR = new Error('Need more time to figure that out')
 
@@ -19,7 +18,7 @@ tap.test("on", async function (t) {
 tap.test("@handler", async function (t) {
   t.plan(2)
 
-	const waitOneHandle = handler(waitOne)
+	const waitOneHandle = on.handler(waitOne)
 
 	const [err,res] = await waitOneHandle()
 

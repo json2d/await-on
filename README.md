@@ -11,14 +11,13 @@ really simple error handling with await/async
 inspired by [`await-to-js`](https://github.com/scopsy/await-to-js) whose creator [Dima Grossman](http://blog.grossman.io/how-to-write-async-await-without-try-catch-blocks-in-javascript/) originally blogged about using destructuring array assignment
 
 ## Overview
-This package basically provides 3 syntactical paths to choose from:
+This package basically provides 2 main syntaxes to choose from:
 ```javascript
-const {on, handler} = require('await-on');
+const on = require('await-on');
 
 const fetchData = () => new Promise(/*...*/);
 
 const [err, data] = await on(fetchData());
-const [err, data] = await handler(fetchData)(); //decorator
 const [err, data] = await fetchData().handle(); //prototype extension
 ```
 
@@ -47,20 +46,7 @@ async function foo(req,res) {
 }
 ```
 
-Using the decorator pattern with `handler` yields some cleaner high level code:
-
-```javascript
-const {handler} = require('await-on');
-let fetchData = () => new Promise(/*...*/);
-fetchData = handler(fetchData);
-
-async function foo(req,res) {
-	const [err, data] = await fetchData();
-	!err ? res.send(data) : res.send(err);
-}
-```
-
-Finally, using the prototype extension `handle` on Promise types is also clean and is arguably even more readable because it also uses the chaining pattern already standard when working with Promises 🌟 :
+using the prototype extension `handle` on Promise types is a bit cleaner, and its potentially more readable because its also using the same chaining pattern already standard for working with Promises 🌟 :
 
 ```javascript
 require('await-on');
@@ -71,12 +57,28 @@ async function foo(req,res) {
 }
 ```
 
+
 ## Type fuzziness
 Non-promises will passthrough same as the behavior of the native `await`
 
 ```javascript
 const [err,answer] = await on(42); //not a promise but ok no big deal
 console.log(answer) //> 42
+```
+
+
+## Decorator approach
+A decorator `on.handler` is also provided to wrap promise bearing functions with the handling functionalities:
+
+```javascript
+const {handler} = require('await-on');
+let fetchData = () => new Promise(/*...*/);
+fetchDataAndHandle = handler(fetchData);
+
+async function foo(req,res) {
+	const [err, data] = await fetchDataAndHandle();
+	!err ? res.send(data) : res.send(err);
+}
 ```
 
 ## License
