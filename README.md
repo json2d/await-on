@@ -78,3 +78,6 @@ Non-promises will passthrough same as the behavior of the native `await`
 const [err,answer] = await on(42); //not a promise but ok no big deal
 console.log(answer) //> 42
 ```
+
+## License
+MIT License. See [License](https://github.com/bitstrider/await-on/blob/master/LICENSE) in the repository.
