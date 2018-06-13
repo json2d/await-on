@@ -4,7 +4,7 @@
 ![npm](https://img.shields.io/npm/l/await-on.svg)
 ![npm](https://img.shields.io/npm/dt/await-on.svg)
 ![Travis](https://img.shields.io/travis/bitstrider/await-on.svg)
-
+![Coveralls github](https://img.shields.io/coveralls/github/bitstrider/await-on.svg)
 
 really simple error handling with await/async
 
