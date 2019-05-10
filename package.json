@@ -28,6 +28,7 @@
   "author": "Jason Yung",
   "license": "MIT",
   "devDependencies": {
+    "bluebird": "^3.5.4",
     "tap": "^10.7.2"
   },
   "engines": {
