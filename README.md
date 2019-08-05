@@ -81,5 +81,17 @@ async function foo(req,res) {
 }
 ```
 
+## Promises/A+ compliant support
+You never know what kind of promise you'll get from an external dependency. It can be from Bluebird, Babel polyfill or some other library. `on` should work with any promise object can `then`, such as the one provided by the popular [`bluebird`](https://github.com/petkaantonov/bluebird/) package:
+
+```
+const {on} = require('await-on');
+const Bluebird = require('bluebird')
+
+const fetchData = () => new Bluebird(/*...*/);
+const [err, data] = await on(fetchData());
+```
+
+
 ## License
 MIT License. See [License](https://github.com/bitstrider/await-on/blob/master/LICENSE) in the repository.
